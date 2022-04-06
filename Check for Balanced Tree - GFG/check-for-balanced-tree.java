@@ -141,18 +141,15 @@ class Tree
                 return (rheight + 1);
     }
     }
-    //Function to check whether a binary tree is balanced or not.
     boolean isBalanced(Node root)
     {
-	// Your code here
+
 	if(root == null){
 	    return true;
 	}
 	int lh = height(root.left);
 	int rh = height(root.right);
-// 	System.out.println(lh);
-//         System.out.println(rh);
-        
+ 
      if (Math.abs(lh - rh) <= 1
             && isBalanced(root.left)
             && isBalanced(root.right))
