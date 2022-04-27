@@ -15,16 +15,21 @@
  */
 class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
-        if(nums.length ==0)return null;
-        if(nums.length ==1) return new TreeNode(nums[0]);
-        int mid = nums.length/2;
-        TreeNode root = new TreeNode(nums[mid]);
+        if(nums.length == 0){
+            return null;
+        }
+        TreeNode root = helper(nums,0,nums.length-1);
         
-        int[] arr1 = Arrays.copyOfRange(nums, 0, mid);
-		root.left = sortedArrayToBST(arr1);
-		
-        int[] arr2 = Arrays.copyOfRange(nums, mid + 1, nums.length);
-        root.right = sortedArrayToBST(arr2);
         return root;
+    }
+    public TreeNode helper(int[] nums,int low,int high){
+        if(low>high){
+            return null;
+        }
+        int mid = low + ( high - low ) /2;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = helper(nums,low,mid-1);
+        node.right = helper(nums,mid+1,high);
+        return node;
     }
 }
