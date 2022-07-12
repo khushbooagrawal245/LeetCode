@@ -9,6 +9,7 @@ class Solution {
             x=x/10;
         }
         }
+        System.out.println(p);
         if(org == p)
             return true;
         return false;
